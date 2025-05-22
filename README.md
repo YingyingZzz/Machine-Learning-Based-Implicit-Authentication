@@ -5,7 +5,7 @@
 This project is a partial replication and exploration based on the original repository:  
 [User-Identification-and-Classification-From-Walking-Activity](https://github.com/theumairahmed/User-Identification-and-Classification-From-Walking-Activity) by Umair Ahmed.
 
-The core implementation, especially `learn.py`, was originally developed by Umair Ahmed and shared via public GitHub. The project was conducted under the supervision of Dr. Di Wu and focuses on understanding the overall workflow, reproducing experiments, and redesigning result visualizations. All credit for the original implementation goes to the author.
+The core implementation, especially `learn.py`, was originally developed by Umair Ahmed and shared via public GitHub. My contribution focused on understanding the full ML process, reproducing key experiments, and enhancing result visualization, under the supervision of Dr. Di Wu.
 
 ## Technologies
 - Language: Python
@@ -55,4 +55,4 @@ Features are extracted per axis (X, Y, Z), including:
   - Root Mean Square (RMS), Mean Absolute Deviation (MAD), Energy
   - Skewness, Kurtosis, Range, etc.
 
-> Note: The current `Features.csv` does not include column headers. Feature names are assumed based on standard accelerometer feature engineering practices.
+> Note: The current `Features.csv` does not include column headers. Feature names are assumed based on standard accelerometer feature engineering practices. For future improvements, explicit feature labeling is recommended to enhance clarity and reproducibility.
