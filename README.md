@@ -5,7 +5,7 @@
 This project is a partial replication and exploration based on the original repository:  
 [User-Identification-and-Classification-From-Walking-Activity](https://github.com/theumairahmed/User-Identification-and-Classification-From-Walking-Activity) by Umair Ahmed.
 
-The core implementation, especially `learn.py`, was originally developed by Umair Ahmed and shared via public GitHub. My contribution focused on understanding the full ML process, reproducing key experiments, and enhancing result visualization, under the supervision of Dr. Di Wu.
+The core implementation, especially `learn.py`, was originally developed by Umair Ahmed and shared via public GitHub. Under the supervision of Dr. Di Wu, I focused on understanding the full machine learning process, reproducing key experiments, and improving result visualizations. The code was re-annotated to reflect my interpretation of the implementation logic.
 
 ## Technologies
 - Language: Python
