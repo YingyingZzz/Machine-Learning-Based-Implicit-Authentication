@@ -22,8 +22,21 @@ The core implementation, especially `learn.py`, was originally developed by Umai
 - Outputs merged dataset `Features.csv` for ML input
 
 ### 2. 'learn.py' – Model Training & Evaluation
-- Trains classifiers (Linear SVM, KNN, Decision Tree, Random Forest)
-- Evaluates using accuracy, precision, recall, and F1-score
+- Trains classifiers (Linear SVM, KNN, Decision Tree, Random Forest, etc.)
+- Evaluates models using accuracy, precision, recall, and F1-score
+- Uses 10-fold cross-validation and confusion matrix visualization for analysis
+
+**Execution flow of learn.py:**
+1. Load extracted features from 'Features.csv'
+2. Split the dataset into training and testing sets (60/40 split)
+3. Define a dictionary of classifiers with specific hyperparameters
+4. For each classifier:
+   - Train on the training set
+   - Predict on the test set
+   - Compute 10-fold cross-validation accuracy
+   - Generate and plot a normalized confusion matrix
+   - Record mean accuracy and standard deviation
+5. Plot a bar chart comparing classifier performances
 
 ### 3. 'plot.py' – Visualization
 - Plots comparison of classifier performance using bar charts
