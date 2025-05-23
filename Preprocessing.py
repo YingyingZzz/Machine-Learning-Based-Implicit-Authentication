@@ -6,6 +6,20 @@
 @Modified by: Yingying Zhou (2023)
 """
 
+"""
+Execution flow of Preprocessing.py:
+
+1. Define column names for accelerometer data (timestamp, x, y, z)
+2. Load 18 segmented CSV files (each containing one walking session)
+3. Trim each file to 1100 rows for uniform segment length
+4. Compute magnitude from x/y/z and append as a fourth axis
+5. For each segment:
+   - Apply overlapping sliding window (length=100, stride=50)
+   - For each window:
+     - Compute statistical features on each axis (x, y, z, magnitude)
+6. Aggregate all feature vectors and write to 'Features.csv'
+"""
+
 #important imports
 import pandas as pd
 import math
