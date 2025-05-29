@@ -7,12 +7,51 @@ This project is a partial replication and exploration based on the original repo
 
 The core implementation, especially `learn.py`, was originally developed by Umair Ahmed and shared via public GitHub. Under the supervision of Dr. Di Wu, I focused on understanding the full machine learning process, reproducing key experiments, and improving result visualizations. The code was re-annotated to reflect my interpretation of the implementation logic.
 
+For a comprehensive explanation of the motivation, implementation, algorithm design, and evaluation, please refer to the full project report: `Project_Report_ImplicitAuth.pdf`.
+
+## Project Report
+A detailed writeup discussing the full workflow, design decisions, and simulation outcomes is included in `Project_Report_ImplicitAuth.pdf`.
+
 ## Technologies
 - Language: Python
 - Dependencies:
   - `numpy`, `pandas`
   - `scikit-learn`
   - `matplotlib`, `seaborn`
+
+## File Structure
+- `Preprocessing.py` – Extracts statistical features from raw motion data
+- `learn.py` – Trains and evaluates multiple ML models (SVM, KNN, etc.)
+- `plot.py` – Visualizes model performance (e.g., bar chart of accuracies)
+- `test.py` – Evaluates models using 10-fold cross-validation
+- `README.md` – Project documentation
+- `Project_Report_ImplicitAuth.pdf` – Full report covering project background, methodology, model design, and experimental results
+
+## Feature Extraction Workflow
+The feature extraction process used in this project follows these steps:
+
+### 1. Input Directory
+Place 18 segmented motion sensor data files (e.g., `1.csv`, `2.csv`, ...) into a folder such as `Dataset/`. Each file represents a session or user and should contain raw or windowed accelerometer values (e.g., `timestamp`, `acc_x`, `acc_y`, `acc_z`).
+
+### 2. Run Preprocessing Script
+Execute `Preprocessing.py`, which:
+  - Iterates over all `.csv` files in `Dataset/`
+  - Computes statistical features from each file, such as:
+    - Mean, standard deviation, max, min, RMS, etc.
+  - Assigns a user/session ID to each record
+  - Combines all results into a single aggregated file: `Features.csv`
+
+### 3. Feature Output Format
+Each row in `Features.csv` represents a single segmented input file (e.g., a walking session). The file contains 49 columns:
+  - 1st column: segment index or user/session ID
+  - Remaining 48 columns: statistical features extracted from accelerometer signals
+
+Features are extracted per axis (X, Y, Z), including:
+  - Mean, Standard Deviation, Max, Min
+  - Root Mean Square (RMS), Mean Absolute Deviation (MAD), Energy
+  - Skewness, Kurtosis, Range, etc.
+
+> Note: The current `Features.csv` does not include column headers. Feature names are assumed based on standard accelerometer feature engineering practices. For future improvements, explicit feature labeling is recommended to enhance clarity and reproducibility.
 
 ## Components
 
@@ -68,29 +107,3 @@ The core implementation, especially `learn.py`, was originally developed by Umai
 4. Aggregate predictions from all folds
 5. Compute evaluation metrics across the full dataset
 6. Optionally display or save confusion matrix
-
-## Feature Extraction Workflow
-The feature extraction process used in this project follows these steps:
-
-### 1. Input Directory
-Place 18 segmented motion sensor data files (e.g., `1.csv`, `2.csv`, ...) into a folder such as `Dataset/`. Each file represents a session or user and should contain raw or windowed accelerometer values (e.g., `timestamp`, `acc_x`, `acc_y`, `acc_z`).
-
-### 2. Run Preprocessing Script
-Execute `Preprocessing.py`, which:
-  - Iterates over all `.csv` files in `Dataset/`
-  - Computes statistical features from each file, such as:
-    - Mean, standard deviation, max, min, RMS, etc.
-  - Assigns a user/session ID to each record
-  - Combines all results into a single aggregated file: `Features.csv`
-
-### 3. Feature Output Format
-Each row in `Features.csv` represents a single segmented input file (e.g., a walking session). The file contains 49 columns:
-  - 1st column: segment index or user/session ID
-  - Remaining 48 columns: statistical features extracted from accelerometer signals
-
-Features are extracted per axis (X, Y, Z), including:
-  - Mean, Standard Deviation, Max, Min
-  - Root Mean Square (RMS), Mean Absolute Deviation (MAD), Energy
-  - Skewness, Kurtosis, Range, etc.
-
-> Note: The current `Features.csv` does not include column headers. Feature names are assumed based on standard accelerometer feature engineering practices. For future improvements, explicit feature labeling is recommended to enhance clarity and reproducibility.
