@@ -52,8 +52,22 @@ The core implementation, especially `learn.py`, was originally developed by Umai
 ### 3. 'plot.py' – Visualization
 - Plots comparison of classifier performance using bar charts
 
-### 4. 'test.py' – (Optional) Custom Tests
-- Additional evaluation logic or post-hoc model testing
+### 4. 'test.py' – 10-Fold Cross-Validation Evaluation
+- Evaluates model performance using 10-fold cross-validation over the full feature dataset
+- Computes overall accuracy, precision, recall, F1-score, and optionally confusion matrix
+
+**Execution flow of test.py:**
+1. Load Features.csv containing precomputed feature vectors
+2. Perform 10-fold cross-validation:
+   - Split data into 10 folds
+   - For each fold:
+     - Use 1 fold as test, remaining 9 as train
+     - Normalize features using standard scaling
+     - Train model and predict test labels
+     - Collect predictions and ground truth
+4. Aggregate predictions from all folds
+5. Compute evaluation metrics across the full dataset
+6. Optionally display or save confusion matrix
 
 ## Feature Extraction Workflow
 The feature extraction process used in this project follows these steps:
